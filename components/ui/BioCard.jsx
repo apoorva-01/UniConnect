@@ -28,11 +28,14 @@ export default function BioCard(props) {
       <CardContent>
         <Image src="/images/1.jpeg" sx={{}} width={300} height={350} />
 
-        <Typography sx={{ color: "black", paddingTop: "1rem", fontWeight: "800", fontSize: "1.4rem" }} level="title-lg">{props.name}</Typography>
+        <Typography sx={{ color: "black", paddingTop: "1rem", fontWeight: "800", fontSize: "1.4rem" }} level="title-lg">{props.name}'  {props.age}</Typography>
         <Typography sx={{ color: "black", fontWeight: "600", fontSize: "1rem", maxWidth: '24ch' }}>
           {props.bio}
         </Typography>
 
+        <Typography sx={{ color: "black", fontWeight: "600", fontSize: "1rem", maxWidth: '24ch' }}>
+          {props.university}
+        </Typography>
         <Stack
           direction="row"
           spacing={2}
@@ -131,14 +134,14 @@ export default function BioCard(props) {
           </IconButton>
         </Box>
       </CardContent>
-      <CardOverflow sx={{ bgcolor: 'background.level1' }}>
+      {/* <CardOverflow sx={{ bgcolor: 'background.level1' }}>
         <CardActions buttonFlex="1">
           <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
             <Button>Message</Button>
             <Button>Connect</Button>
           </ButtonGroup>
         </CardActions>
-      </CardOverflow>
+      </CardOverflow> */}
     </Card>
   );
 }
