@@ -25,7 +25,7 @@ import {
 
 const structure = [
   { id: 22, label: "Live Dashboard", link: "/", icon: <DataObjectIcon/> },
-  { id: 1, label: 'Card', link: '/card', icon: <SensorsSharpIcon /> },
+  { id: 1, label: 'Card', link: '/info', icon: <SensorsSharpIcon /> },
   // { id: 2, label: 'Gateways', link: '/gateways', icon: <CellTowerSharpIcon /> },
   // { id: 3, type: 'divider' },
   // { id: 4, type: "title", label: "Details" },

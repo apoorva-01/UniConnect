@@ -77,7 +77,7 @@ export default function SignInSide() {
                justifyContent: 'center'
               }}
             >
-             <Image src='/logo.svg'width={200} height={200}alt={'IGSCS LOGO'} ></Image>
+             {/* <Image src='/logo.svg'width={200} height={200}alt={'IGSCS LOGO'} ></Image> */}
               </Box>
               <Typography component="p" sx={{ fontWeight: 700 }} variant="h6">
                 Login

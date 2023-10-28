@@ -3,13 +3,13 @@ import NextLink from 'next/link';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material';
-import { useAuth } from 'hooks/use-auth';
+// import { useAuth } from 'hooks/use-auth';
 import { Layout as AuthLayout } from 'layouts/auth/layout';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 const Page = () => {
 //   const router = useRouter();
-  const auth = useAuth();
+  // const auth = useAuth();
   const formik = useFormik({
     initialValues: {
       email: '',
