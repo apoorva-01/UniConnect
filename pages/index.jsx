@@ -1,45 +1,64 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from 'next/router';
-import Layout from "../Layout/Layout"
+import Layout from "../Layout/Layout";
 import { DataStore } from '../utils/DataStore';
-import { ResponsiveContainer } from "recharts";
 import User from '../models/User';
 import db from '../utils/db';
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import axios from 'axios'
-import Box from '@mui/material/Box';
-import Alert from '@mui/material/Alert';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import CloseIcon from '@mui/icons-material/Close';
-import BioCard from '../components/ui/BioCard'
-export default function LiveData({entries}) {
+import BioCard from '../components/ui/BioCard';
+import TinderCard from 'react-tinder-card';
+
+export default function LiveData({ entries }) {
   const router = useRouter();
   const { state } = useContext(DataStore);
   const { userInfo } = state;
-  
-  console.log(entries)
+
+  // State to track the stack of cards
+  const [cardStack, setCardStack] = useState(entries);
+
+  // Function to handle card swipes
+  const onSwipe = (direction) => {
+    console.log('You swiped: ' + direction);
+
+    if (direction === 'right' || direction === 'left') {
+      // Remove the top card from the stack
+      setCardStack((prevStack) => prevStack.slice(1));
+    }
+  }
+
   return (
     <Layout>
-       {entries.map((user) => (
-        <BioCard
-          key={user._id}
-          name={user.name} // You should replace with the actual field name containing the user's name
-          bio={user.bio} // You should replace with the actual field name containing the user's bio
-          image={user.image} // You should replace with the actual field name containing the user's image URL
-          interests={user.interests} // You should replace with the actual field name containing the user's image URL
-        />
-      ))}
-      {/* <BioCard name={''} bio={" Hello, this is my bio and love to code"} image={'/images/1.jpeg'} /> */}
+      <div style={{ position: 'relative' }}>
+        {cardStack.map((user, index) => (
+          <div style={{ position: 'absolute' }}>
+          <TinderCard
+            onSwipe={onSwipe}
+            preventSwipe={['right', 'left']}
+            key={user._id}
+          >
+            <BioCard
+             
+              name={user.name}
+              age={user.age}
+              university={user.university}
+              facebook={user.facebook}
+              snapchat={user.snapchat}
+              whatsapp={user.whatsapp}
+              instagram={user.instagram}
+              bio={user.bio}
+              image={user.image}
+              interests={user.interests}
+            />
+          </TinderCard>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 }
 
 export async function getServerSideProps() {
   await db.connect();
-  const users = await User.find({}).lean()
+  const users = await User.find({}).lean();
   await db.disconnect();
   const serializedUsers = users.map((user) => ({
     ...user,

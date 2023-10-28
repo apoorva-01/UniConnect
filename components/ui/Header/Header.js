@@ -16,7 +16,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 // styles
 import useStyles from "./styles";
-
+import PersonIcon from '@mui/icons-material/Person';
 // components
 import { Badge, Typography, Button } from "../Wrappers";
 import { DataStore } from '../../../utils/DataStore';
@@ -80,7 +80,7 @@ export default function Header(props) {
         <Grid justifyContent='center' alignItems='center' container>
           <Grid item xs={2}>
             <Link href='/'><a>
-              <video loop autoPlay width={100} height={60} src="logo.mp4"></video>
+              {/* <video loop autoPlay width={100} height={60} src="logo.mp4"></video> */}
               {/* <Image width={100} height={60} src="/logo.svg" alt="IGSCS Logo" /> */}
             </a></Link>
           </Grid>
@@ -106,7 +106,8 @@ export default function Header(props) {
                 aria-controls="profile-menu"
                 onClick={e => setProfileMenu(e.currentTarget)}
               >
-                 <video loop autoPlay width={100} height={60} src="logo.mp4"></video>
+                <PersonIcon sx={{color:"white"}}/>
+                 {/* <video loop autoPlay width={100} height={60} src="logo.mp4"></video> */}
               </IconButton>
             </Box>
           
