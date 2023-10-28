@@ -11,9 +11,10 @@ import CardActions from '@mui/joy/CardActions';
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
-
+import Layout from "../Layout/Layout"
 export default function BioCard() {
   return (
+    <Layout>
     <Card
       sx={{
         width: 320,
@@ -124,5 +125,6 @@ export default function BioCard() {
         </CardActions>
       </CardOverflow>
     </Card>
+    </Layout>
   );
 }
