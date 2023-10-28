@@ -47,7 +47,7 @@ export default function Header(props) {
     router.push('/login');
   };
   return (
-    <AppBar style={{ background: '#B8DCEA' }} position="fixed" className={classes.appBar}>
+    <AppBar style={{ background: 'black' }} position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           color="inherit"
@@ -90,7 +90,7 @@ export default function Header(props) {
                 variant="h4"
                 align="center"
                 className='appbar-title'
-                style={{ color: '#214181' }}
+                style={{ color: '#fff' }}
               >
                 UniConnect
               </Typography>
