@@ -1,0 +1,19 @@
+import mongoose from 'mongoose';
+
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, unique: true },
+    age: { type: Number },
+    interests: { type:Array },
+    facebook: { type:String },
+    whatsapp: { type:String },
+    instagram: { type:String },
+    snapchat: { type:String },
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, required: true, default: false },
+    isSuperAdmin: { type: Boolean, required: true, default: false },
+  }
+);
+
+const User = mongoose.models.User || mongoose.model('User', userSchema,'users');
+export default User;
