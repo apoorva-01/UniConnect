@@ -9,9 +9,10 @@ import Layout from "../Layout/Layout"
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
+import Interest from '../components/ui/Interest'
 const steps = ['Age(Just a number)', 'Your Vibe', 'Other Socials Link'];
 
-export default function HorizontalLinearStepper() {
+export default function Info() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -59,71 +60,99 @@ export default function HorizontalLinearStepper() {
 
   return (
     <Layout>
-    <Box sx={{ width: '100%' }}>
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-             
-            </Step>
-          );
-        })}
-      </Stepper>
-      <TextField
-          label="With normal TextField"
-          id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">kg</InputAdornment>,
-          }}
-        />
-      {activeStep === steps.length ? (
-        <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
-          </Box>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
-            <Box sx={{ flex: '1 1 auto' }} />
-            {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )}
+      <Box sx={{ width: '100%' }}>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+            if (isStepOptional(index)) {
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }
+            // Check if the label is '1' and render the TextField accordingly
 
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
-          </Box>
-        </React.Fragment>
-      )}
-    </Box>
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+
+
+              </Step>
+
+            );
+          })}
+        </Stepper>
+
+        {activeStep === steps.length ? (
+          <React.Fragment>
+            <Typography sx={{ mt: 2, mb: 1 }}>
+              All steps completed - you&apos;re finished
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+              <Box sx={{ flex: '1 1 auto' }} />
+              <Button onClick={handleReset}>Reset</Button>
+            </Box>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
+            {activeStep === 0 ? (
+              <TextField
+                label="Your Age"
+                id="outlined-start-adornment"
+                sx={{ m: 1, width: '25ch' }}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"></InputAdornment>,
+                }}
+              />
+            ) : null}
+            {activeStep === 1 ? (
+              <>
+             <Interest name={"Music"} desc={"Listening & Singing"} />
+             <Interest name={"Dance"} desc={"Listening & Singing"} />
+             <Interest name={"Drama"} desc={"Listening & Singing"} />
+             <Interest name={"Fashion"} desc={"Listening & Singing"} />
+             <Interest name={"Gaming"} desc={"Listening & Singing"} />
+             <Interest name={"Fitness"} desc={"Listening & Singing"} />
+             </>
+            ) : null}
+            {activeStep === 2 ? (
+              <TextField
+                label="With normal TextField"
+                id="outlined-start-adornment"
+                sx={{ m: 1, width: '25ch' }}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">kg</InputAdornment>,
+                }}
+              />
+            ) : null}
+
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+              <Button
+                color="inherit"
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                sx={{ mr: 1 }}
+              >
+                Back
+              </Button>
+              <Box sx={{ flex: '1 1 auto' }} />
+              {isStepOptional(activeStep) && (
+                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                  Skip
+                </Button>
+              )}
+
+              <Button onClick={handleNext}>
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              </Button>
+            </Box>
+          </React.Fragment>
+        )}
+      </Box>
     </Layout>
   );
 }
