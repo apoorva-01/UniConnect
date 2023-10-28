@@ -22,7 +22,7 @@ export default function LiveData({ }) {
  
   return (
     <Layout>
-<BioCard name={'Rahul Verma'} bio={" Hello, this is my bio and love to code"} image={'/images/1.jpg'}/>
+<BioCard name={'Rahul Verma'} bio={" Hello, this is my bio and love to code"} image={'/images/1.jpeg'}/>
     </Layout>
   );
 }
