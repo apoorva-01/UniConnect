@@ -17,7 +17,7 @@ function Layout(props) {
   const router = useRouter();
   useEffect(() => {
     if (!userInfo) {
-      router.push('/login');
+      // router.push('/login');
     }
   }, []);
   var classes = useStyles();
@@ -32,7 +32,7 @@ function Layout(props) {
       
         <Header history={props.history} />
        
-        <Sidebar />
+        {/* <Sidebar /> */}
         <div
           className={classnames(classes.content, {
             [classes.contentShift]: layoutState.isSidebarOpened,

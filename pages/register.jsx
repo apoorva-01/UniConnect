@@ -2,14 +2,13 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material';
-// import { useAuth } from 'hooks/use-auth';
-import { Layout as AuthLayout } from 'layouts/auth/layout';
+import { Layout as AuthLayout } from '../layouts/layout';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 const Page = () => {
-//   const router = useRouter();
-  // const auth = useAuth();
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -44,7 +43,7 @@ const Page = () => {
         password
       });
       Cookies.set('userInfo', data);
-    //   router.push('/');
+      router.push('/info');
       } catch (err) {
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
@@ -55,11 +54,7 @@ const Page = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Register | Planet Donate
-        </title>
-      </Head>
+    
       <Box
         sx={{
           flex: '1 1 auto',
@@ -81,7 +76,7 @@ const Page = () => {
               spacing={1}
               sx={{ mb: 3 }}
             >
-              <Typography variant="h4">
+              <Typography sx={{color:"black",fontWeight:900}} variant="h4">
                 Register
               </Typography>
               <Typography
@@ -150,7 +145,7 @@ const Page = () => {
               <Button
                 fullWidth
                 size="large"
-                sx={{ mt: 3 }}
+                sx={{ mt: 3 ,backgroundColor:'black'}}
                 type="submit"
                 variant="contained"
               >

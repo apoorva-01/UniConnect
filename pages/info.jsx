@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext, useState } from "react";
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -11,11 +11,14 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Interest from '../components/ui/Interest';
 import axios from 'axios';
 import Stack from '@mui/material/Stack';
+import { DataStore } from '../utils/DataStore';
 import { useRouter } from 'next/router';
 const steps = ['Age(Just a number)', 'Your Vibe', 'Other Socials Link'];
 
 export default function Info() {
   const router = useRouter();
+  const { state } = useContext(DataStore);
+  const { userInfo } = state;
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [age, setAge] = React.useState('');
@@ -26,6 +29,7 @@ export default function Info() {
   const [whatsappLink, setWhatsappLink] = React.useState('');
   const [instagramLink, setInstagramLink] = React.useState('');
   const [snapchatLink, setSnapchatLink] = React.useState('');
+  console.log(userInfo)
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -47,6 +51,7 @@ export default function Info() {
     else if (activeStep === 2) {
       // Send data to the APIfacebookLink
       const userData = {
+        _id:userInfo._id,
         age: age,
         interests: selectedInterests,
         university: university,
@@ -168,16 +173,18 @@ export default function Info() {
             ) : null}
             {activeStep === 1 ? (
               <>
-              <Stack sx={{marginTop:"2rem"}} direction="row" spacing={2}>
+              {/* <Stack sx={{marginTop:"2rem"}} direction="row" spacing={2}> */}
 
                 <Interest
                   name="Music"
+                  image="/images/music.jpg"
                   desc="Listening & Singing"
                   onSelect={handleInterestSelect}
                   selected={selectedInterests.includes('Music')}
                 />
                 <Interest
                   name="Dance"
+                  image="/images/dance.jpg"
                   desc="Listening & Singing"
                   onSelect={handleInterestSelect}
                   selected={selectedInterests.includes('Dance')}
@@ -185,17 +192,20 @@ export default function Info() {
                 
                 <Interest
                   name="Fashion"
+                  image="/images/fashion.jpg"
                   desc="Listening & Singing"
                   onSelect={handleInterestSelect}
                   selected={selectedInterests.includes('Dance')}
                 />
                 <Interest
                   name="Fitness"
+                  image="/images/fitness.jpg"
                   desc="Listening & Singing"
                   onSelect={handleInterestSelect}
                   selected={selectedInterests.includes('Dance')}
                 />
-                </Stack>
+                {/* </Stack> */}
+
                 {/* Add more Interest components for other interests */}
               </>
             ) : null}
