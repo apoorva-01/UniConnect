@@ -29,14 +29,13 @@ export default function LiveData({ entries }) {
     <Layout>
       <div style={{ position: 'relative' }}>
         {cardStack.map((user, index) => (
-          <div style={{ position: 'absolute' }}>
+          <div key={index} style={{ position: 'absolute' }}>
           <TinderCard
             onSwipe={onSwipe}
-            preventSwipe={['right', 'left']}
+            // preventSwipe={['right', 'left']}
             key={user._id}
           >
             <BioCard
-             
               name={user.name}
               age={user.age}
               university={user.university}

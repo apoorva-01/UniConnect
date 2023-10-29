@@ -1,9 +1,11 @@
 import React, { useContext, useEffect} from 'react';
 import Image from 'next/image'
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -57,8 +59,9 @@ export default function SignInSide() {
     <ThemeProvider theme={theme}>
 
       <Grid container component="main" sx={{ height: '100vh' }}>
-        <Grid container justifyContent='center' alignItems='center' item xs={false} sm={4} lg={7}>
-         <Image src='/logo.svg'width={500} height={500}alt={'IGSCS LOGO'} ></Image>
+        <Grid sx={{backgroundColor:"black"}} container justifyContent='center' alignItems='center' item xs={false} sm={4} lg={7}>
+         {/* <Image src='/logo.svg'width={500} height={500}alt={'IGSCS LOGO'} ></Image> */}
+         <Typography sx={{fontSize:"6rem",color:"white",fontWeight:900}} >UniConnect</Typography>
         </Grid>
         <Grid item xs={12} sm={8} lg={5} component={Paper} elevation={6} square>
           {/* Form Started */}
@@ -79,9 +82,9 @@ export default function SignInSide() {
             >
              {/* <Image src='/logo.svg'width={200} height={200}alt={'IGSCS LOGO'} ></Image> */}
               </Box>
-              <Typography component="p" sx={{ fontWeight: 700 }} variant="h6">
+              {/* <Typography component="p" sx={{ fontWeight: 700 }} variant="h6">
                 Login
-              </Typography>
+              </Typography> */}
               <Box sx={{ mt: 1 }}>
 
                 {/* Name */}
@@ -146,11 +149,25 @@ export default function SignInSide() {
                 />
 
                   <Button className='hvr-grow' type="submit" 
-                    style={{ width: '100%', backgroundColor: '#38B6FF', color: 'white', marginTop: '2rem', marginBottom: '2rem' }} >
+                    style={{ width: '100%', backgroundColor: 'black', color: 'white', marginTop: '2rem', marginBottom: '2rem' }} >
                     Log In
                   </Button>
                 
-
+                  <Typography
+                color="text.secondary"
+                variant="body2"
+              >
+                Don't have an account?
+                &nbsp;
+                <Link
+                  component={NextLink}
+                  href="/register"
+                  underline="hover"
+                  variant="subtitle2"
+                >
+                  Register
+                </Link>
+              </Typography>
               </Box>
             </Box>
           </form>
