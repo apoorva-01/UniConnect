@@ -1,4 +1,4 @@
-# UniConnect
+# uniconnect-campus-platform
 
 A campus platform that combines student profiles, a swipe-to-connect way to find
 people, and a live IoT environment dashboard — built with Next.js, Material UI,
@@ -28,8 +28,8 @@ and MongoDB.
 ## Getting started
 
 ```bash
-git clone https://github.com/apoorva-01/UniConnect.git
-cd UniConnect
+git clone https://github.com/apoorva-01/uniconnect-campus-platform.git
+cd uniconnect-campus-platform
 npm install
 ```
 
