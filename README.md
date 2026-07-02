@@ -1,4 +1,4 @@
-# uniconnect-campus-platform
+# UniConnect
 
 A campus platform that combines student profiles, a swipe-to-connect way to find
 people, and a live IoT environment dashboard — built with Next.js, Material UI,
